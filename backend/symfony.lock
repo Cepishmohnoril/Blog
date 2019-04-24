@@ -12,10 +12,10 @@
         "version": "1.0.1"
     },
     "symfony/cache": {
-        "version": "v4.2.5"
+        "version": "v4.2.7"
     },
     "symfony/config": {
-        "version": "v4.2.5"
+        "version": "v4.2.7"
     },
     "symfony/console": {
         "version": "3.3",
@@ -34,22 +34,22 @@
         "version": "v1.0.2"
     },
     "symfony/debug": {
-        "version": "v4.2.5"
+        "version": "v4.2.7"
     },
     "symfony/dependency-injection": {
-        "version": "v4.2.5"
+        "version": "v4.2.7"
     },
     "symfony/dotenv": {
-        "version": "v4.2.5"
+        "version": "v4.2.7"
     },
     "symfony/event-dispatcher": {
-        "version": "v4.2.5"
+        "version": "v4.2.7"
     },
     "symfony/filesystem": {
-        "version": "v4.2.5"
+        "version": "v4.2.7"
     },
     "symfony/finder": {
-        "version": "v4.2.5"
+        "version": "v4.2.7"
     },
     "symfony/flex": {
         "version": "1.0",
@@ -83,10 +83,10 @@
         ]
     },
     "symfony/http-foundation": {
-        "version": "v4.2.5"
+        "version": "v4.2.7"
     },
     "symfony/http-kernel": {
-        "version": "v4.2.5"
+        "version": "v4.2.7"
     },
     "symfony/polyfill-mbstring": {
         "version": "v1.11.0"
@@ -107,9 +107,9 @@
         ]
     },
     "symfony/var-exporter": {
-        "version": "v4.2.5"
+        "version": "v4.2.7"
     },
     "symfony/yaml": {
-        "version": "v4.2.5"
+        "version": "v4.2.7"
     }
 }
