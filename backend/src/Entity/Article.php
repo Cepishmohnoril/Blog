@@ -27,12 +27,12 @@ class Article
     private $text;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true, columnDefinition="ON UPDATE CURRENT_TIMESTAMP")
+     * @ORM\Column(type="datetime", columnDefinition="DATETIME ON UPDATE CURRENT_TIMESTAMP")
      */
     private $updated;
 
     /**
-     * @ORM\Column(type="datetime", nullable=false, columnDefinition="DEFAULT CURRENT_TIMESTAMP")
+     * @ORM\Column(type="datetime", columnDefinition="DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP")
      */
     private $created;
 
