@@ -12,9 +12,8 @@ class ArticlesController extends BaseController
      */
     public function index()
     {
-        return $this->json([
-            'message' => 'Welcome to your new controller!',
-            'path' => 'src/Controller/ArticlesController.php',
-        ]);
+        $articles = $this->getDoctrine()->getRepository(Article::class)->findAll();
+
+        return $this->handleView($this->view($articles));
     }
 }
