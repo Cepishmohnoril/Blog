@@ -16,4 +16,14 @@ class ArticlesController extends BaseController
 
         return $this->handleView($this->view($articles));
     }
+
+    /**
+     * Show all articles
+     */
+    public function getAllArticles()
+    {
+        $articles = $this->getDoctrine()->getRepository(Article::class)->findAll();
+
+        return $this->handleView($this->view($articles));
+    }
 }

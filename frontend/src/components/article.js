@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from "react-router";
 
-class Post extends React.Component {
+class Article extends React.Component {
     render() {
         return(
             <div className="w-container">
@@ -91,4 +91,4 @@ class Post extends React.Component {
     }
 }
 
-export default withRouter(Post);
+export default withRouter(Article);

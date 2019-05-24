@@ -6,8 +6,8 @@ import { createBrowserHistory } from 'history';
 import MainLayout from './components/layouts/main-layout';
 
 //Pages
-import Home from './components/containers/home';
-import Post from './components/containers/post';
+import Home from './components/home';
+import Article from './components/article';
 
 const history = createBrowserHistory();
 
@@ -15,7 +15,7 @@ export default (
 	<BrowserRouter history={ history }>
 		<MainLayout>
 			<Switch>
-				<Route path="/:id" component={ Post } />
+				<Route path="/:id" component={ Article } />
 				<Route path="/" component={ Home } />
 			</Switch>
 		</MainLayout>
