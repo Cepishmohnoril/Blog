@@ -4,10 +4,6 @@ import BlogApi from '../api/blog-api';
 
 
 class Home extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     componentDidMount() {
         let api = new BlogApi();
         api.getArticles();
@@ -20,13 +16,13 @@ class Home extends Component {
                 <div className="w-dyn-items">
                 {this.props.articles.map(article => {
                     return (
-                        <div className="w-dyn-item">
+                        <div key={article.id} className="w-dyn-item">
                             <div className="post-wrapper">
                                 <a className="blog-title-link w-inline-block" href="/posts/coffee-variety-macchiato-as-organic-ut-variety-caffeine-americano">
                                     <h1 className="blog-title">{article.title}</h1>
                                 </a>
                                 <div className="post-info-wrapper">
-                                    <div className="post-info">{article.created}/*March 2, 2016*/</div>
+                                    <div className="post-info">{article.created /*March 2, 2016*/ }</div>
                                     <div className="post-info">|</div>
                                     <a className="post-info when-link" href="/categories/travel">Travel</a>
                                 </div>

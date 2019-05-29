@@ -8,9 +8,9 @@ const articlesReducer = function(state = initialState, action) {
 	switch(action.type) {
 		case GET_ARTICLES:
 			return Object.assign({}, state, {articles: action.articles});
+		default:
+			return state
 	}
-
-	return state;
 }
 
 export default articlesReducer;
