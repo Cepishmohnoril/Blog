@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import BlogApi from '../api/blog-api';
-
+import { Link } from 'react-router-dom';
 
 class Home extends Component {
     componentDidMount() {
-        let api = new BlogApi();
-        api.getArticles();
-        console.log(this.props);
+        this.props.api.getArticles();
     }
 
     render() {
@@ -18,16 +15,16 @@ class Home extends Component {
                     return (
                         <div key={article.id} className="w-dyn-item">
                             <div className="post-wrapper">
-                                <a className="blog-title-link w-inline-block" href="/posts/coffee-variety-macchiato-as-organic-ut-variety-caffeine-americano">
+                                <Link to={'/'+article.id} className="blog-title-link w-inline-block">
                                     <h1 className="blog-title">{article.title}</h1>
-                                </a>
+                                </Link>
                                 <div className="post-info-wrapper">
                                     <div className="post-info">{article.created /*March 2, 2016*/ }</div>
                                     <div className="post-info">|</div>
                                     <a className="post-info when-link" href="/categories/travel">Travel</a>
                                 </div>
                                 <p className="post-summary">{article.text}</p>
-                                <a className="button-round w-button" href="/posts/coffee-variety-macchiato-as-organic-ut-variety-caffeine-americano">Continue reading →</a>
+                                <Link to={'/'+article.id} className="button-round w-button">Continue reading →</Link>
                             </div>
                         </div>
                     );
@@ -39,9 +36,10 @@ class Home extends Component {
 }
 
 const mapStateToProps = function(state) {
-  return {
-    articles: state.articlesState.articles
-  };
+    return {
+        articles: state.articlesState.articles,
+        api: state.apiState.api
+    };
 };
 
 export default connect(mapStateToProps)(Home);

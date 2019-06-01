@@ -12,17 +12,22 @@ class ArticlesController extends BaseController
      */
     public function index()
     {
-        $articles = $this->getDoctrine()->getRepository(Article::class)->findAll();
-
-        return $this->handleView($this->view($articles));
+        return ['articles', 'article/{id}'];
     }
 
     /**
      * Show all articles
      */
-    public function getAllArticles()
+    public function getArticles()
     {
         $articles = $this->getDoctrine()->getRepository(Article::class)->findAll();
+
+        return $this->handleView($this->view($articles));
+    }
+
+    public function getArticle($id)
+    {
+        $articles = $this->getDoctrine()->getRepository(Article::class)->find($id);
 
         return $this->handleView($this->view($articles));
     }

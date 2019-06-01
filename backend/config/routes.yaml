@@ -4,4 +4,8 @@
 
 articles:
     path:     /articles
-    controller: App\Controller\ArticlesController::index
+    controller: App\Controller\ArticlesController::getArticles
+
+article:
+    path: /article/{id}
+    controller: App\Controller\ArticlesController::getArticle
