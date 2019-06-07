@@ -1,13 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from "react-router";
+import { withRouter, Redirect } from "react-router";
 
 class Article extends React.Component {
+
     componentDidMount() {
         this.props.api.getArticle(this.props.match.params.id);
     }
 
     render() {
+        if(this.props.api.lastRequestError) {
+            return(
+                <Redirect to="/error" />
+            );
+        }
+
         return(
             <div className="w-container">
                 <div className="post-title-section">
@@ -30,7 +37,6 @@ class Article extends React.Component {
 }
 
 const mapStateToProps = function(state) {
-console.log(state);
     return {
         article: state.articleState.article,
         api: state.apiState.api

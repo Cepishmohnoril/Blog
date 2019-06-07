@@ -1,13 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { Redirect } from "react-router";
 
-class Home extends Component {
+class Home extends React.Component {
     componentDidMount() {
         this.props.api.getArticles();
     }
 
     render() {
+        if(this.props.api.lastRequestError) {
+            return(
+                <Redirect to="/error" />
+            );
+        }
+
         return (
             <div className="blog-list w-dyn-list">
                 <div className="w-dyn-items">

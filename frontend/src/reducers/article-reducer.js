@@ -9,7 +9,7 @@ const articleReducer = function(state = initialState, action) {
         case GET_ARTICLE:
             return Object.assign({}, state, {article: action.article});
         default:
-            return state
+            return state;
     }
 }
 

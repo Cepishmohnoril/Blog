@@ -20,9 +20,9 @@ function MainLayout(props) {
                             <a className="nav-link w-nav-link" href="/contact" style={{ maxWidth: '940px' }}>Contact</a>
                             <div className="divider"></div>
                             <div className="social-link-group">
-                                <Link to="https://www.facebook.com/cepishmohnoril" className="social-icon-link w-inline-block">
+                                <a href="https://www.facebook.com/cepishmohnoril" className="social-icon-link w-inline-block">
                                     <img src="http://uploads.webflow.com/56d6955f710a7126338b8b1c/56d6955f710a7126338b8ba7_social-03-white.svg" width="25" alt="facebook" />
-                                </Link>
+                                </a>
                             </div>
                         </nav>
                         <div className="menu-button w-nav-button">

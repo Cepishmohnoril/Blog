@@ -486,8 +486,8 @@ figcaption {
 }
 
 .button-round:hover {
-	background-color: #86C232;
-  	color: #333;
+    background-color: #86C232;
+    color: #333;
 }
 
 .post-info-wrapper {
@@ -858,4 +858,19 @@ html.w-mod-js *[data-ix="scale-on-scroll"] {
     margin-bottom: 11px;
     margin-left: 0px;
   }
+}
+
+.error-label {
+    display: block;
+    margin: 0 auto;
+}
+
+.error-container {
+    margin: 0 auto;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    text-transform: uppercase;
 }

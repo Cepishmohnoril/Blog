@@ -8,7 +8,7 @@ use App\Entity\Article;
 class ArticlesController extends BaseController
 {
     /**
-     * Show all articles
+     * Show all available requests
      */
     public function index()
     {
@@ -22,13 +22,26 @@ class ArticlesController extends BaseController
     {
         $articles = $this->getDoctrine()->getRepository(Article::class)->findAll();
 
-        return $this->handleView($this->view($articles));
+        if (!empty($articles)) {
+            $this->httpSuccess();
+        }
+
+        return $this->outputJson($this->view($articles));
     }
 
+    /**
+     * Show article by ID
+     */
     public function getArticle($id)
     {
-        $articles = $this->getDoctrine()->getRepository(Article::class)->find($id);
+        $article = $this->getDoctrine()->getRepository(Article::class)->find($id);
 
-        return $this->handleView($this->view($articles));
+        if ($article instanceof Article) {
+            $this->httpSuccess();
+        } else {
+            $this->httpNotFound();
+        }
+
+        return $this->outputJson($this->view($article));
     }
 }
