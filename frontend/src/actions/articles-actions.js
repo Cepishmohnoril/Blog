@@ -1,16 +1,16 @@
 export const GET_ARTICLES = 'GET_ARTICLES';
 export const GET_ARTICLE = 'GET_ARTICLE';
 
-export function getArticles(articles) {
+export function getArticles(data) {
 	return {
 		type: GET_ARTICLES,
-		articles
+		data
 	}
 }
 
-export function getArticle(article) {
+export function getArticle(data) {
 	return {
 		type: GET_ARTICLE,
-		article
+		data
 	}
 }

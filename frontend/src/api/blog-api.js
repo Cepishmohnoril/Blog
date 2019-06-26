@@ -1,4 +1,6 @@
 import axios from 'axios';
+import http from 'http';
+import https from 'https';
 import store from '../store';
 import * as articlesActions from '../actions/articles-actions'
 
@@ -8,18 +10,24 @@ export const HTTP_SERVER_ERROR = 500;
 
 class BlogApi {
 
-    construct() {
+    constructor() {
         // eslint-disable-next-line
-        let lastRequestError = false;
+        this.lastRequestError = false;
 
-        let api = axios.create({
-            
+        this.api = axios.create({
+            baseURL: process.env.REACT_APP_API,
+            httpAgent: new http.Agent({
+                keepAlive: true,
+            }),
+            httpsAgent: new https.Agent({
+                keepAlive: true,
+            }),
         });
     }
 
-    getArticles() {
+    getArticles(page) {
         this.lastRequestError = false;
-        return axios.get(process.env.REACT_APP_API+'/articles')
+        return this.api.get('/articles/' + page)
             .catch(error => {
                 this.lastRequestError = error.response.status;
                 return false;
@@ -32,7 +40,7 @@ class BlogApi {
 
     getArticle(id) {
         this.lastRequestError = false;
-        return axios.get(process.env.REACT_APP_API+'/article/'+id)
+        return this.api.get('/article/'+id)
             .catch(error => {
                 this.lastRequestError = error.response.status;
                 return false;

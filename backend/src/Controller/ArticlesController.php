@@ -18,9 +18,9 @@ class ArticlesController extends BaseController
     /**
      * Show all articles
      */
-    public function getArticles()
+    public function getArticles($page)
     {
-        $articles = $this->getDoctrine()->getRepository(Article::class)->findAll();
+        $articles = $this->getDoctrine()->getRepository(Article::class)->findByPage($page);
 
         if (!empty($articles)) {
             $this->httpSuccess();

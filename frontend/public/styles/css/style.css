@@ -874,3 +874,7 @@ html.w-mod-js *[data-ix="scale-on-scroll"] {
     text-decoration: none;
     text-transform: uppercase;
 }
+
+.blog-list-pagination-container {
+	text-align: center;
+}

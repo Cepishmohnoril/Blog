@@ -2,9 +2,18 @@
 #    path: /
 #    controller: App\Controller\DefaultController::index
 
-articles:
-    path:     /articles
+Articles:
+    path: /articles
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
+    defaults:
+        path: /articles/1
+        permanent: true
+
+articles_by_page:
+    path: /articles/{page}
     controller: App\Controller\ArticlesController::getArticles
+    requirements:
+        page: '\d+'
 
 article:
     path: /article/{id}
