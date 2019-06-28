@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Redirect } from "react-router";
+import moment from "moment";
 
 class Article extends React.Component {
 
@@ -20,7 +21,7 @@ class Article extends React.Component {
                 <div className="post-title-section">
                     <h1>{ this.props.article.title }</h1>
                     <div className="post-info-wrapper">
-                        <div className="post-info">{ this.props.article.created /*March 2, 2016*/}</div>
+                        <div className="post-info">{ moment(this.props.article.created).format("MMMM D, YYYY") }</div>
                         <div className="post-info">|</div>
                         <a className="post-info when-link" href="/categories/travel">Travel</a>
                     </div>

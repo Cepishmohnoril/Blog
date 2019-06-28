@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Redirect } from "react-router";
+import moment from 'moment';
 
 class Home extends React.Component {
     currentPage: number;
@@ -42,7 +43,7 @@ class Home extends React.Component {
                                         <h1 className="blog-title">{article.title}</h1>
                                     </Link>
                                     <div className="post-info-wrapper">
-                                        <div className="post-info">{article.created /*March 2, 2016*/ }</div>
+                                        <div className="post-info">{ moment(article.created).format("MMMM D, YYYY") }</div>
                                         <div className="post-info">|</div>
                                         <a className="post-info when-link" href="/categories/travel">Travel</a>
                                     </div>

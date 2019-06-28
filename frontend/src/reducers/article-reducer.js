@@ -7,7 +7,7 @@ const initialState = {
 const articleReducer = function(state = initialState, action) {
     switch(action.type) {
         case GET_ARTICLE:
-            return Object.assign({}, state, {article: action.article});
+            return Object.assign({}, state, {article: action.data});
         default:
             return state;
     }
