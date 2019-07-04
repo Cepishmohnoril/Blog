@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Redirect } from "react-router";
 import moment from 'moment';
+import store from '../store';
+import { clearArticles } from '../actions/articles-actions'
 
 class Home extends React.Component {
     currentPage: number;
@@ -10,6 +12,10 @@ class Home extends React.Component {
     componentDidMount() {
         this.currentPage = 0;
         this.getOneMorePage();
+    }
+
+    componentWillUnmount() {
+        store.dispatch(clearArticles());
     }
 
     getOneMorePage() {
