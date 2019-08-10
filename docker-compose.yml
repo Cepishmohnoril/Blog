@@ -1,0 +1,50 @@
+version: '3.3'
+
+services:
+  nginx:
+    container_name: nginx
+    image: nginx:latest
+    ports:
+      - "80:80"
+      - "443:443"
+    links:
+      - php
+
+  php:
+    container_name: php
+    build: ./env/php
+    links:
+      - mysql
+    volumes:
+      - ./backend:/var/www/backend
+
+  react:
+    container_name: react
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend/src:/var/www/src
+      - ./frontend/public:/var/www/public
+      - ./frontend/package.json:/var/www/package.json
+      - ./frontend/package-lock.json:/var/www/package-lock.json
+    environment:
+      TZ: 'Europe/Kiev'
+    command: npm start
+
+  mysql:
+    container_name: mysql
+    restart: always
+    image: mysql:8
+    ports:
+      - "3306:3306"
+    tty: true
+    volumes:
+      #HOST:CONTAINER
+      - ./env/mysql:/var/lib/mysql
+    environment:
+      TZ: 'Europe/Kiev'
+      MYSQL_DATABASE: 'blog'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: '1234'
+      MYSQL_ROOT_PASSWORD: '1234'
