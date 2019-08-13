@@ -3,7 +3,7 @@ FROM node:latest
 WORKDIR /var/www
 
 # React
-COPY . /var/www/
+COPY package.json package.json
 
 RUN npm install --no-optional
 RUN npm audit fix

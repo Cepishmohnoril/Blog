@@ -1,22 +1,38 @@
 version: '3.3'
 
 services:
+
+#Web-server
   nginx:
     container_name: nginx
     image: nginx:latest
+    restart: unless-stopped
+    tty: true
     ports:
       - "80:80"
       - "443:443"
+    volumes:
+      - ./backend:/var/www
+      - ./env/nginx/conf.d:/etc/nginx/conf.d
     links:
       - php
+    networks:
+      - app-network
 
+#Applications
   php:
     container_name: php
-    build: ./env/php
+    build: ./backend
+    restart: unless-stopped
+    tty: true
+    expose:
+      - "9000"
     links:
       - mysql
     volumes:
-      - ./backend:/var/www/backend
+      - ./backend:/var/www/
+    networks:
+      - app-network
 
   react:
     container_name: react
@@ -24,14 +40,12 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ./frontend/src:/var/www/src
-      - ./frontend/public:/var/www/public
-      - ./frontend/package.json:/var/www/package.json
-      - ./frontend/package-lock.json:/var/www/package-lock.json
+      - ./frontend:/var/www/
     environment:
       TZ: 'Europe/Kiev'
     command: npm start
 
+#Database
   mysql:
     container_name: mysql
     restart: always
@@ -48,3 +62,10 @@ services:
       MYSQL_USER: 'user'
       MYSQL_PASSWORD: '1234'
       MYSQL_ROOT_PASSWORD: '1234'
+    networks:
+      - app-network
+
+#Docker Networks
+networks:
+  app-network:
+    driver: bridge

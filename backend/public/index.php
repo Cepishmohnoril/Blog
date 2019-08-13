@@ -1,4 +1,5 @@
 <?php
+phpinfo();die;
 
 use App\Kernel;
 use Symfony\Component\Debug\Debug;
