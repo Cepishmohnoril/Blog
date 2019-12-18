@@ -8,3 +8,5 @@ COPY package-lock.json package-lock.json
 
 RUN npm install --no-optional
 RUN npm audit fix
+
+CMD [ "npm", "start" ]
