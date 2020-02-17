@@ -39,7 +39,19 @@ class MainLayout extends React.Component{
                                 <div className="divider"></div>
                                 <div className="social-link-group">
                                     <a href="https://www.facebook.com/cepishmohnoril" className="social-icon-link w-inline-block">
-                                        <img src="http://uploads.webflow.com/56d6955f710a7126338b8b1c/56d6955f710a7126338b8ba7_social-03-white.svg" width="25" alt="facebook" />
+                                        <img src="/styles/ico/facebook.svg" width="25" alt="facebook" />
+                                    </a>
+                                    <a href="https://twitter.com/Cepishmohnoril" className="social-icon-link w-inline-block">
+                                        <img src="/styles/ico/twitter.svg" width="25" alt="facebook" />
+                                    </a>
+                                    <a href="https://www.instagram.com/cepishmohnoril" className="social-icon-link w-inline-block">
+                                        <img src="/styles/ico/instagram.svg" width="25" alt="facebook" />
+                                    </a>
+                                    <a href="https://github.com/Cepishmohnoril" className="social-icon-link w-inline-block">
+                                        <img src="/styles/ico/github.svg" width="25" alt="facebook" />
+                                    </a>
+                                    <a href="https://www.linkedin.com/in/vladyslav-radchuk-68a5b45a" className="social-icon-link w-inline-block">
+                                        <img src="/styles/ico/linkedin.svg" width="25" alt="facebook" />
                                     </a>
                                 </div>
                             </nav>
