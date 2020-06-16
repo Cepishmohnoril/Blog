@@ -34,13 +34,25 @@ services:
     networks:
       - app-network
 
-  react:
-    container_name: react
-    build: ./frontend
+  react-blog:
+    container_name: react-blog
+    build: ./blog-front
     ports:
       - "3000:3000"
     volumes:
-      - ./frontend:/var/www/
+      - ./blog-front:/var/www
+      - /var/www/node_modules
+    environment:
+      TZ: 'Europe/Kiev'
+    stdin_open: true
+
+  react-admin:
+    container_name: react-admin
+    build: ./admin-front
+    ports:
+      - "3001:3000"
+    volumes:
+      - ./admin-front:/var/www
       - /var/www/node_modules
     environment:
       TZ: 'Europe/Kiev'

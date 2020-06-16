@@ -2,7 +2,7 @@ FROM node:latest
 
 WORKDIR /var/www
 
-# React
+# React admin
 COPY package.json package.json
 COPY package-lock.json package-lock.json
 
