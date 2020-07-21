@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Controller\BaseController;
 use App\Entity\Article;
+use Symfony\Component\HttpFoundation\Response;
 
 class ArticlesController extends BaseController
 {
@@ -26,7 +27,11 @@ class ArticlesController extends BaseController
             $this->httpSuccess();
         }
 
-        return $this->outputJson($this->view($articles));
+        $view = $this
+            ->view($articles)
+            ->setHeader('Content-Range', 'posts 0-1/10');
+
+        return $this->outputJson($view);
     }
 
     /**

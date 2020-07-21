@@ -1,8 +1,6 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+#Blog routes
 
-Articles:
+articles:
     path: /articles
     controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
     defaults:
@@ -11,10 +9,30 @@ Articles:
 
 articles_by_page:
     path: /articles/{page}
-    controller: App\Controller\ArticlesController::getArticles
+    controller: App\Controller\Blog\ArticlesController::getArticles
     requirements:
         page: '\d+'
 
 article:
     path: /article/{id}
-    controller: App\Controller\ArticlesController::getArticle
+    controller: App\Controller\Blog\ArticlesController::getArticle
+
+
+#Admin routes
+
+admin_articles:
+    path: /admin/articles
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
+    defaults:
+        path: /admin/articles/1
+        permanent: true
+
+admin_articles_by_page:
+    path: /admin/articles/{page}
+    controller: App\Controller\Admin\ArticlesController::getArticles
+    requirements:
+        page: '\d+'
+
+admin_article:
+    path: /admin/article/{id}
+    controller: App\Controller\Admin\ArticlesController::getArticle

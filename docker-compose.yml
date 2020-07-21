@@ -37,6 +37,7 @@ services:
   react-blog:
     container_name: react-blog
     build: ./blog-front
+    tty: true
     ports:
       - "3000:3000"
     volumes:
@@ -49,6 +50,7 @@ services:
   react-admin:
     container_name: react-admin
     build: ./admin-front
+    tty: true
     ports:
       - "3001:3000"
     volumes:
