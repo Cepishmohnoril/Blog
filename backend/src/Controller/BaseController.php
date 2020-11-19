@@ -2,10 +2,9 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use FOS\RestBundle\Controller\FOSRestController;
+use FOS\RestBundle\Controller\AbstractFOSRestController;
 
-class BaseController extends FOSRestController
+class BaseController extends AbstractFOSRestController
 {
     private const HTTP_SUCCESS = 200;
     private const HTTP_NOT_FOUND = 404;

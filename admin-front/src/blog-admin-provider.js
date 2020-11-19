@@ -37,12 +37,14 @@ export default (apiUrl, httpClient = fetchUtils.fetchJson): DataProvider => ({
     getList: (resource, params) => {
         const { page, perPage } = params.pagination;
         const { field, order } = params.sort;
-       	//const query = {
-        //    sort: JSON.stringify([field, order]),
-        //    range: JSON.stringify([(page - 1) * perPage, page * perPage - 1]),
-        //    filter: JSON.stringify(params.filter),
-        //};
-        const url = `${apiUrl}/${resource}/1`;
+        const query = {
+            page: JSON.stringify(page),
+            perPage: JSON.stringify(perPage),
+            sort: JSON.stringify([field, order]),
+            filter: JSON.stringify(params.filter),
+        };
+
+        const url = `${apiUrl}/${resource}?${stringify(query)}`;
 
         return httpClient(url).then(({ headers, json }) => {
             if (!headers.has('Content-Range')) {
@@ -50,6 +52,15 @@ export default (apiUrl, httpClient = fetchUtils.fetchJson): DataProvider => ({
                     'The Content-Range header is missing in the HTTP Response. The simple REST data provider expects responses for lists of resources to contain this header with the total number of results to build the pagination. If you are using CORS, did you declare Content-Range in the Access-Control-Expose-Headers header?'
                 );
             }
+
+            console.log(parseInt(
+                headers
+                    .get('content-range')
+                    .split('/')
+                    .pop(),
+                10
+            ));
+
             return {
                 data: json.articles,
                 total: parseInt(

@@ -19,19 +19,9 @@ article:
 
 
 #Admin routes
-
 admin_articles:
     path: /admin/articles
-    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
-    defaults:
-        path: /admin/articles/1
-        permanent: true
-
-admin_articles_by_page:
-    path: /admin/articles/{page}
     controller: App\Controller\Admin\ArticlesController::getArticles
-    requirements:
-        page: '\d+'
 
 admin_article:
     path: /admin/article/{id}

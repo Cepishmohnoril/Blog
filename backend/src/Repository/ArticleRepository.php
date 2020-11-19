@@ -20,13 +20,17 @@ class ArticleRepository extends ServiceEntityRepository
         parent::__construct($registry, Article::class);
     }
 
-    public function findByPage($currentPage = 1)
+    /**
+     * @
+     *
+     * @return array
+     */
+    public function findByPage(int $currentPage = 1, int $pageSize, array $sort): array
     {
         $qb = $this->createQueryBuilder('a')->getQuery();
         $paginator = new Paginator($qb);
 
         $totalArticles = $paginator->count();
-        $pageSize = 2;
         $totalPages = ceil($totalArticles/$pageSize);
 
         $result = $paginator
