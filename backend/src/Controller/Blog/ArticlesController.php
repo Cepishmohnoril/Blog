@@ -20,10 +20,7 @@ class ArticlesController extends BaseController
      */
     public function getArticles($page)
     {
-        $perPage = 3;
-        $sort = [];
-
-        $articles = $this->getDoctrine()->getRepository(Article::class)->findByPage($page, $perPage, $sort);
+        $articles = $this->getDoctrine()->getRepository(Article::class)->findByPage($page);
 
         if (!empty($articles)) {
             $this->httpSuccess();

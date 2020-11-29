@@ -5,7 +5,7 @@ namespace App\Repository;
 use App\Entity\Article;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Tools\Pagination\Paginator;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Common\Persistence\ManagerRegistry;
 
 /**
  * @method Article|null find($id, $lockMode = null, $lockVersion = null)
@@ -15,7 +15,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class ArticleRepository extends ServiceEntityRepository
 {
-    public function __construct(RegistryInterface $registry)
+    public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Article::class);
     }
@@ -25,7 +25,7 @@ class ArticleRepository extends ServiceEntityRepository
      *
      * @return array
      */
-    public function findByPage(int $currentPage = 1, int $pageSize, array $sort): array
+    public function findByPage(int $currentPage = 1, int $pageSize = 5, array $sort = ['id', 'DESC']): array
     {
         $qb = $this->createQueryBuilder('a')->getQuery();
         $paginator = new Paginator($qb);
